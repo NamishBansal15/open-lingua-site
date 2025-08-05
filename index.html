@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Lingua Initiative - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="logo"><a href="index.html">Open Lingua Initiative</a></div>
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">About</a>
+        <div class="dropdown-menu" aria-label="submenu">
+          <a href="about-mission.html">Mission</a>
+          <a href="about-founders.html">Founders</a>
+        </div>
+      </li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-full">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Bridging the gap between research and language.</h1>
+      <p class="subtitle">Every translated paper brings knowledge to more people.</p>
+      <a href="get-involved.html" class="btn large">Join Us</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Open Lingua Initiative</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

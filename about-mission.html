@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Lingua Initiative - Mission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<script src="nav-active.js" defer></script>
+
+<body>
+  <nav>
+    <div class="logo"><a href="index.html">Open Lingua Initiative</a></div>
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">About</a>
+        <div class="dropdown-menu" aria-label="submenu">
+          <a href="about-mission.html">Mission</a>
+          <a href="about-founders.html">Founders</a>
+        </div>
+      </li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="section-wrapper">
+    <h1>Our Mission</h1>
+    <p>
+      Research depends on collaboration, and unfortunately, language barriers often stand in the way of global progress. Today, English is widely considered the global language of science and academia. Most scientific papers use English as the default language for communication.
+    </p>
+    <p>
+      While this common language helps unify researchers worldwide, it also creates significant challenges. Many scientists and learners around the world are not fluent in English, which limits their ability to access, understand, and contribute to the latest research. This language gap slows down scientific progress and excludes valuable perspectives from non-English-speaking communities.
+    </p>
+    <p>
+      We are a nonprofit that aims to help overcome this issue by connecting bilingual volunteers with overlooked research works in another language. Our goal is to make scientific knowledge accessible to everyone, no matter what language they speak.
+    </p>
+    <blockquote>
+      Nearly 75% of papers are in English, but less than 20% actually speak the language.
+    </blockquote>
+    <h2>Our Story</h2>
+    <p>
+      We are a group of 3 high schoolers who are passionate about learning other languages and conducting research. We saw a clear language disparity at our various research internships and decided to take action.
+    </p>
+    <h2>Commitment to Sustainability</h2>
+    <p>
+      While artificial intelligence tools have been advancing rapidly, they are not perfect and often misinterpret complex scientific knowledge. Additionally, AI consumes significant amounts of water and energy to run, slowly degrading our environment. Therefore, we are committed to not using AI in translating, but instead getting real, passionate volunteers.
+    </p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Open Lingua Initiative</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Lingua Initiative</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand:#0077cc;
+      --bg:#f5f5f5;
+      --radius:8px;
+      --gap:1.25rem;
+      font-family: 'Inter', system-ui,-apple-system,sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: var(--font-family, 'Inter', system-ui, -apple-system, sans-serif);
+      color: #222;
+      line-height: 1.5;
+      background: #fff;
+      min-height: 100vh;
+      padding-top: 60px; /* for fixed nav */
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1rem;
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: #222;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex: 1 1 auto;
+    }
+
+    #menu-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      flex: 0 1 auto;
+      align-items: center;
+      position: relative;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    /* Dropdown menu styles */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+      user-select: none;
+      display: inline-block;
+    }
+
+    .dropdown-toggle::after {
+      content: " ▼";
+      font-size: 0.6em;
+      margin-left: 4px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      min-width: 150px;
+      z-index: 200;
+      flex-direction: column;
+      padding: 0.5rem 0;
+    }
+
+    .dropdown-menu a {
+      padding: 8px 16px;
+      color: #222;
+      display: block;
+      font-weight: 400;
+      border-radius: 0;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--brand);
+      color: white;
+    }
+
+    /* Show dropdown on hover (desktop) */
+    nav li.dropdown:hover > .dropdown-menu {
+      display: flex;
+    }
+
+    /* Hero */
+    .hero-full {
+      position: relative;
+      width: 100vw;
+      height: 80vh;
+      margin: 0;
+      padding: 0 1rem;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(135deg, #006bb3 0%, #0088dd 60%),
+        url('assets/hero.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-full .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      padding: 0 1rem;
+    }
+
+    .hero-content h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin: 0.5rem 0 1.5rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 400;
+    }
+
+    .btn {
+      background: var(--brand);
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .btn.large {
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
+      border-radius: 6px;
+    }
+
+    /* Sections */
+    .section-wrapper {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h1, h2 {
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      font-size: 1.125rem;
+      color: #333;
+    }
+
+    blockquote {
+      font-style: italic;
+      background: #f0f0f0;
+      padding: 1.5rem 2rem;
+      border-left: 5px solid var(--brand);
+      margin: 2rem 0;
+      font-size: 1.2rem;
+      color: #555;
+      border-radius: 6px;
+    }
+
+    .team {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      flex: 1 1 200px;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.75rem;
+    }
+
+    .team-member p {
+      margin: 0;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg);
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* responsive tweaks */
+    @media (max-width: 980px) {
+      .hero-full {
+        padding: 1rem;
+        min-height: 65vh;
+      }
+
+      .hero-content {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 800px) {
+      #menu-toggle {
+        display: block;
+      }
+      nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        width: 220px;
+        padding: 0.5rem 0;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        display: none;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+      nav ul.open {
+        display: flex;
+      }
+      nav ul li {
+        width: 100%;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px 16px;
+      }
+      /* dropdown inside mobile menu */
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        padding-left: 1rem;
+        display: none;
+        flex-direction: column;
+      }
+      .dropdown.open > .dropdown-menu {
+        display: flex;
+      }
+      .dropdown-toggle::after {
+        content: none;
+      }
+      .team {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Open Lingua Initiative</div>
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">About</a>
+        <div class="dropdown-menu" aria-label="submenu">
+          <a href="#mission">Mission</a>
+          <a href="#founders">Founders</a>
+        </div>
+      </li>
+
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-full">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Bridging the gap between research and language.</h1>
+      <p class="subtitle">Every translated paper brings knowledge to more people.</p>
+      <a href="get-involved.html" class="btn large">Join Us</a>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section id="mission" class="section-wrapper">
+    <h2>Our Mission</h2>
+    <p>
+      Research depends on collaboration, and unfortunately, language barriers often stand in the way of global progress. Today, English is widely considered the global language of science and academia. Most scientific papers use English as the default language for communication.
+    </p>
+    <p>
+      While this common language helps unify researchers worldwide, it also creates significant challenges. Many scientists and learners around the world are not fluent in English, which limits their ability to access, understand, and contribute to the latest research. This language gap slows down scientific progress and excludes valuable perspectives from non-English-speaking communities.
+    </p>
+    <p>
+      We are a nonprofit that aims to help overcome this issue by connecting bilingual volunteers with overlooked research works in another language. Our goal is to make scientific knowledge accessible to everyone, no matter what language they speak.
+    </p>
+    <blockquote>
+      Nearly 75% of papers are in English, but less than 20% actually speak the language.
+    </blockquote>
+    <h3>Our Story</h3>
+    <p>
+      We are a group of 3 high schoolers who are passionate about learning other languages and conducting research. We saw a clear language disparity at our various research internships and decided to take action.
+    </p>
+    <h3>Commitment to Sustainability</h3>
+    <p>
+      While artificial intelligence tools have been advancing rapidly, they are not perfect and often misinterpret complex scientific knowledge. Additionally, AI consumes significant amounts of water and energy to run, slowly degrading our environment. Therefore, we are committed to not using AI in translating, but instead getting real, passionate volunteers.
+    </p>
+  </section>
+
+  <!-- Founders Section -->
+  <section id="founders" class="section-wrapper">
+    <h2>Founders</h2>
+    <p>We are a group of 3 high schoolers passionate about languages and research. We noticed the language gap in research and decided to take action.</p>
+    <div class="team">
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Co-founder 1" />
+        <p><strong>Name 1</strong><br /><small>Co-founder</small></p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Co-founder 2" />
+        <p><strong>Name 2</strong><br /><small>Co-founder</small></p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Co-founder 3" />
+        <p><strong>Name 3</strong><br /><small>Co-founder</small></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Open Lingua Initiative</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const dropdown = document.querySelector('nav li.dropdown');
+    const dropToggle = dropdown.querySelector('.dropdown-toggle');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+
+    // mobile dropdown toggle
+    dropToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 800) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      }
+    });
+
+    // close mobile dropdown if clicking outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 800) {
+        if (!dropdown.contains(e.target) && dropdown.classList.contains('open')) {
+          dropdown.classList.remove('open');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

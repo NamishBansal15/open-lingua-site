@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open Lingua Initiative - Founders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<script src="nav-active.js" defer></script>
+
+<body>
+  <nav>
+    <div class="logo"><a href="index.html">Open Lingua Initiative</a></div>
+    <button id="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">About</a>
+        <div class="dropdown-menu" aria-label="submenu">
+          <a href="about-mission.html">Mission</a>
+          <a href="about-founders.html">Founders</a>
+        </div>
+      </li>
+      <li><a href="get-involved.html">Get Involved</a></li>
+      <li><a href="faq.html">FAQs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="section-wrapper">
+    <h1>Founders</h1>
+    <p>We are a group of 3 high schoolers passionate about languages and research. We noticed the language gap in research and decided to take action.</p>
+    <div class="team">
+      <div class="team-member">
+        <img src="assets/peggy.png" alt="Peggy Feng" />
+        <p><strong>Peggy Feng</strong><br /><small>Co-founder</small></p>
+      </div>
+      <div class="team-member">
+        <img src="assets/vid.JPEG" alt="Vid Yash" />
+        <p><strong>Vid Yash</strong><br /><small>Co-founder</small></p>
+      </div>
+      <div class="team-member">
+        <img src="assets/collin.JPEG" alt="Collin Lu" />
+        <p><strong>Collin Lu</strong><br /><small>Co-founder</small></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Open Lingua Initiative</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

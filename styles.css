@@ -1,0 +1,433 @@
+:root {
+  --brand: #0077cc;
+  --bg: #f5f5f5;
+  --radius: 8px;
+  --gap: 1.25rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding-top: 60px; /* space for fixed nav */
+  font-family: var(--font-family, 'Inter', system-ui, -apple-system, sans-serif);
+  color: #222;
+  line-height: 1.5;
+  background: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: #222;
+}
+
+nav .logo {
+  flex: 0 0 auto;  /* don’t grow or shrink */
+  height: 60px;    /* fixed nav height */
+  display: flex;
+  align-items: center;  /* vertical center */
+}
+
+nav .logo img.logo-img {
+  max-height: 100%;  /* fill container height but no more */
+  width: auto;
+  display: block;
+}
+
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+.logo a:hover,
+.logo a:focus,
+.logo a:active {
+  outline: none;
+  border: none;
+  color: inherit; /* keep same color */
+  cursor: pointer;
+}
+
+.logo a:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+#menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  align-items: center;
+  flex: 0 1 auto;
+  position: relative;
+}
+
+nav li {
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: #222;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+nav a.active,
+nav a:hover {
+  background: var(--brand);
+  color: white;
+}
+
+/* Dropdown menu */
+.dropdown-toggle {
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 0.6em;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  min-width: 150px;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  z-index: 200;
+}
+
+.dropdown-menu a {
+  padding: 8px 16px;
+  color: #222;
+  font-weight: 400;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background: var(--brand);
+  color: white;
+}
+
+/* Show dropdown on hover (desktop) */
+nav li.dropdown:hover > .dropdown-menu {
+  display: flex;
+}
+
+/* Hero Section (for Home page) */
+.hero-full {
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+  margin: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(135deg, #006bb3 0%, #0088dd 60%),
+    url('assets/hero.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-full .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  padding: 0 1rem;
+}
+
+.hero-content h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0.5rem 0 1.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 400;
+}
+
+.btn {
+  background: var(--brand);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.btn.large {
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+/* Page Content Wrapper */
+.section-wrapper {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+h1, h2, h3 {
+  color: var(--brand);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+  color: #333;
+}
+
+blockquote {
+  font-style: italic;
+  background: #f0f0f0;
+  padding: 1.5rem 2rem;
+  border-left: 5px solid var(--brand);
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  color: #555;
+  border-radius: 6px;
+}
+
+/* Team Section */
+.team {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.team-member {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+}
+
+.team-member p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .hero-full {
+    padding: 1rem;
+    min-height: 65vh;
+  }
+}
+
+@media (max-width: 800px) {
+  #menu-toggle {
+    display: block;
+  }
+  nav ul {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    width: 220px;
+    padding: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+  nav ul.open {
+    display: flex;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav a {
+    width: 100%;
+    padding: 10px 16px;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 1rem;
+    display: none;
+    flex-direction: column;
+  }
+  .dropdown.open > .dropdown-menu {
+    display: flex;
+  }
+  .dropdown-toggle::after {
+    content: none;
+  }
+  .team {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.get-involved,
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* horizontal center */
+  justify-content: center;  /* vertical center */
+  min-height: calc(100vh - 120px); /* account for nav + footer height */
+  text-align: center;
+}
+
+.get-involved h2,
+.contact h2 {
+  margin-bottom: 1rem;
+}
+
+.get-involved .faq {
+  max-width: 600px;
+  text-align: left; /* keep FAQ text readable */
+  margin-top: 2rem;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 300px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.contact input,
+.contact button {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.contact button {
+  background: var(--brand);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background: #005fa3;
+}
+
+.faq-wrapper {
+  max-width: 700px;
+  margin: 3rem auto;  /* centers horizontally and gives vertical spacing */
+  padding: 0 1rem;
+  text-align: center; /* center the text */
+}
+
+.faq p {
+  text-align: left; /* keep paragraphs left aligned inside the centered container */
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+/* logo overlay inside hero */
+.hero-full .logo {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  height: 10px; /* adjust as needed */
+  display: flex;
+  align-items: center;
+}
+
+.hero-full .logo img.logo-img {
+  max-height: 100%;
+  width: auto;
+  display: block;
+}
+
+
